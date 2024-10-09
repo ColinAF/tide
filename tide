@@ -1,0 +1,40 @@
+# This is a sample tide script that will provide a goal for what tide should be able to produce
+# This is an outline for the Mcor eth upgrade project I have been working on 
+
+# Create a new tmux session named 'tide'
+tmux new-session -d -s tide
+
+# Rename the first window to 'editor'
+tmux rename-window -t tide:1 editor
+
+# Split the window horizontally (top 75%, bottom 25%)
+tmux split-window -v -p 25
+# Set project directory
+tmux send-keys -t tide:1.1 'cd /afs/slac/g/spear/epics/app/Mcor/test' C-m
+
+# In the top pane (pane 0), run vim
+tmux send-keys -t tide:1.1 'vim' C-m
+
+tmux send-keys -t tide:1.2 'cd /afs/slac/g/spear/epics/app/Mcor/test' C-m
+
+tmux new-window -t tide:2 -n sandbox
+tmux split-window -v -p 25
+tmux send-keys -t tide:2.1 'cd ~/sandboxs/sandbox00' C-m
+tmux send-keys -t tide:2.1 'vim' C-m
+tmux send-keys -t tide:2.2 'cd ~/sandboxs/sandbox00' C-m
+
+
+tmux new-window -t tide:3 -n iocConsole 
+tmux send-keys -t tide:3.1 'iocConsole iocmcordev' C-m
+
+# Create a search window
+# look through all project dirs when grepping? this should be defined in the YAML 
+# tmux new-window -t tide:2 -n search
+
+
+# Always set the focus to the first window? 
+
+
+# Attach to the tmux session
+tmux attach-session -t tide
+

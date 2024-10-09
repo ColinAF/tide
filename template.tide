@@ -1,0 +1,11 @@
+# This is a template tide output 
+# Everything must be built depth first 
+# session -> window -> pane -> dir -> cmds
+# Create and name session
+# Open all windows
+# Open all panes (set layout here!)
+# Set dir for all panes
+# Run Commands for each pane
+# Set focus to first window 
+# Attach to session
+
